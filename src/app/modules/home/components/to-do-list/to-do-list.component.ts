@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component , OnInit} from '@angular/core';
+
+//Interface
+import { TaskList } from './../../model/task-list';
 
 @Component({
   selector: 'app-to-do-list',
@@ -6,5 +9,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./to-do-list.component.scss']
 })
 export class ToDoListComponent {
+
+  public taskList: Array<TaskList> = [
+
+  ];
+
+
+  constructor() { }
+
+  ngOnInit(): void{}
 
 }
