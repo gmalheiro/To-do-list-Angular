@@ -12,6 +12,22 @@ body{
     background: $primary-background-color;
 }
 
+ul{
+    list-style:none;
+}
+
+textarea:focus, input:focus,button{
+    outline: none;
+}
+
+button{
+    cursor: pointer;
+}
+
+ul{
+    list-style: none;
+}
+
 //classes
 .container{
     width: 350px;
