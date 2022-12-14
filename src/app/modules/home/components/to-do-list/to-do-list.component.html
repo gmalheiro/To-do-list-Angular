@@ -5,11 +5,11 @@
             <input type="checkbox" [(ngModel)] = "item.checked" >
             <input type="text"  [(ngModel)] = "item.task" >
 
-            <button>
+            <button (click)="deleteItemTaskList(i)" >
                 <img src="assets/icons/icon-thrash.svg" alt="ícone com uma lata de lixo">
             </button>
 
-            {{item | json}}
+
         </li>
     </ul>
 
