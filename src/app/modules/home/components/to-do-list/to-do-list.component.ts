@@ -1,4 +1,4 @@
-import { Component , OnInit} from '@angular/core';
+import { Component , OnInit, DoCheck} from '@angular/core';
 
 //Interface
 import { TaskList } from './../../model/task-list';
@@ -10,11 +10,12 @@ import { TaskList } from './../../model/task-list';
 })
 export class ToDoListComponent {
 
-  public taskList: Array<TaskList> = [];
+  public taskList: Array<TaskList> = JSON.parse(localStorage.getItem('list') || '[]');
 
   constructor() { }
 
-  ngOnInit(): void{
+  ngDoCheck(){
+    this.setLocalStorage();
   }
 
   public setEmitTaskList(event: string){
@@ -31,7 +32,23 @@ export class ToDoListComponent {
     if(confirm){
       this.taskList = [];
     }
-
   }
 
+  public validationInput(event: string, index: number){
+
+    if(!event.length){
+      const confirm = window.confirm('Task está vazia, deseja deletar?');
+
+      if(confirm){
+        this.deleteItemTaskList(index);
+      }
+    }
+  }
+
+  public setLocalStorage(){
+    if(this.taskList){
+      this.taskList.sort( (first,last)=> Number(first.checked) - Number(last.checked) );
+      localStorage.setItem("list",JSON.stringify(this.taskList))
+    }
+  }
 }
