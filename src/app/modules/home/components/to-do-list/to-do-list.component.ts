@@ -10,14 +10,15 @@ import { TaskList } from './../../model/task-list';
 })
 export class ToDoListComponent {
 
-  public taskList: Array<TaskList> = [
-    {task: "Estudar Angular",checked: false},
-    {task: "Estudar React",checked: true},
-  ];
+  public taskList: Array<TaskList> = [];
 
   constructor() { }
 
   ngOnInit(): void{
+  }
+
+  public setEmitTaskList(event: string){
+    this.taskList.push({task: event, checked: false});
   }
 
   public deleteItemTaskList(event: number){
@@ -26,6 +27,7 @@ export class ToDoListComponent {
 
   public deleteAllTaskList(){
     const confirm = window.confirm("Você deseja realmente deletar tudo?");
+
     if(confirm){
       this.taskList = [];
     }

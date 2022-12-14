@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-to-do-input-add-itens',
@@ -6,5 +6,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./to-do-input-add-itens.component.scss']
 })
 export class ToDoInputAddItensComponent {
+
+  @Output() public emitItemTaskList = new EventEmitter();
+
+  public addItemTaskList: string = "";
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  public submitItemTaskList(){
+
+    this.addItemTaskList = this.addItemTaskList.trim();
+    if(this.addItemTaskList){
+    this.emitItemTaskList.emit(this.addItemTaskList);
+    this.addItemTaskList = "";
+    }
+  }
 
 }
