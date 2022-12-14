@@ -24,4 +24,12 @@ export class ToDoListComponent {
     this.taskList.splice(event,1);
   }
 
+  public deleteAllTaskList(){
+    const confirm = window.confirm("Você deseja realmente deletar tudo?");
+    if(confirm){
+      this.taskList = [];
+    }
+
+  }
+
 }

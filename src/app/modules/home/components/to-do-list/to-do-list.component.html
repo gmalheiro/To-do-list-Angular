@@ -16,4 +16,4 @@
 </section>
 
 <app-to-do-input-add-itens></app-to-do-input-add-itens>
-<app-to-do-button-delete-all *ngIf="taskList.length" ></app-to-do-button-delete-all>
+<app-to-do-button-delete-all *ngIf="taskList.length" (click)="deleteAllTaskList()" ></app-to-do-button-delete-all>
